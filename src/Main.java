@@ -20,27 +20,8 @@ public class Main {
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch (opcion) {
-                case 1 -> {
-                    System.out.print("Nombre del producto: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Precio del producto: ");
-                    double precio = scanner.nextDouble();
-                    scanner.nextLine();
-                    Producto producto = new Producto(nombre, precio);
-                    productos.add(producto);
-                    System.out.println("Producto añadido correctamente");
-                }
-                case 2 -> {
-                    System.out.print("Índice del producto a borrar: ");
-                    indice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (indice < 0 || indice >= productos.size()) {
-                        System.out.println("Índice no válido");
-                    } else {
-                        productos.remove(indice);
-                        System.out.println("Producto borrado correctamente");
-                    }
-                }
+                case 1 -> case1();
+                case 2 -> case2();
                 case 3 -> {
                     System.out.print("Índice del producto a modificar: ");
                     indice = scanner.nextInt();
@@ -77,6 +58,30 @@ public class Main {
                 default -> System.out.println("Opción no válida");
             }
         } while (opcion != 5);
+    }
+
+    private static void case2() {
+        int indice;
+        System.out.print("Índice del producto a borrar: ");
+        indice = scanner.nextInt();
+        scanner.nextLine();
+        if (indice < 0 || indice >= productos.size()) {
+            System.out.println("Índice no válido");
+        } else {
+            productos.remove(indice);
+            System.out.println("Producto borrado correctamente");
+        }
+    }
+
+    private static void case1() {
+        System.out.print("Nombre del producto: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Precio del producto: ");
+        double precio = scanner.nextDouble();
+        scanner.nextLine();
+        Producto producto = new Producto(nombre, precio);
+        productos.add(producto);
+        System.out.println("Producto añadido correctamente");
     }
 
   /* static class Producto {
