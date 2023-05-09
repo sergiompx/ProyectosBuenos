@@ -22,42 +22,51 @@ public class Main {
             switch (opcion) {
                 case 1 -> case1();
                 case 2 -> case2();
-                case 3 -> {
-                    System.out.print("Índice del producto a modificar: ");
-                    indice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (indice < 0 || indice >= productos.size()) {
-                        System.out.println("Índice no válido");
-                    } else {
-                        System.out.print("Nuevo nombre del producto (deja vacío para no modificar): ");
-                        String nuevoNombre = scanner.nextLine();
-                        System.out.print("Nuevo precio del producto (deja 0 para no modificar): ");
-                        double nuevoPrecio = scanner.nextDouble();
-                        scanner.nextLine();
-                        Producto productoAModificar = productos.get(indice);
-                        if (!nuevoNombre.isEmpty()) {
-                            productoAModificar.setNombre(nuevoNombre);
-                        }
-                        if (nuevoPrecio != 0) {
-                            productoAModificar.setPrecio(nuevoPrecio);
-                        }
-
-                        System.out.println("Producto modificado correctamente");
-                    }
-                }
-                case 4 -> {
-                    System.out.println("=== Listado de productos ===");
-                    for (int index = 0; index < productos.size() ; index++) {
-                        Producto productoAMostrar = productos.get(index);
-                        System.out.println(index + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
-                    }
-
-                    System.out.println("============================");
-                }
-                case 5 -> System.out.println("¡Hasta luego!");
+                case 3 -> case3();
+                case 4 -> case4();
+                case 5 -> case5();
                 default -> System.out.println("Opción no válida");
             }
         } while (opcion != 5);
+    }
+
+    private static void case5() {
+        System.out.println("¡Hasta luego!");
+    }
+
+    private static void case4() {
+        System.out.println("=== Listado de productos ===");
+        for (int index = 0; index < productos.size() ; index++) {
+            Producto productoAMostrar = productos.get(index);
+            System.out.println(index + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
+        }
+
+        System.out.println("============================");
+    }
+
+    private static void case3() {
+        int indice;
+        System.out.print("Índice del producto a modificar: ");
+        indice = scanner.nextInt();
+        scanner.nextLine();
+        if (indice < 0 || indice >= productos.size()) {
+            System.out.println("Índice no válido");
+        } else {
+            System.out.print("Nuevo nombre del producto (deja vacío para no modificar): ");
+            String nuevoNombre = scanner.nextLine();
+            System.out.print("Nuevo precio del producto (deja 0 para no modificar): ");
+            double nuevoPrecio = scanner.nextDouble();
+            scanner.nextLine();
+            Producto productoAModificar = productos.get(indice);
+            if (!nuevoNombre.isEmpty()) {
+                productoAModificar.setNombre(nuevoNombre);
+            }
+            if (nuevoPrecio != 0) {
+                productoAModificar.setPrecio(nuevoPrecio);
+            }
+
+            System.out.println("Producto modificado correctamente");
+        }
     }
 
     private static void case2() {
